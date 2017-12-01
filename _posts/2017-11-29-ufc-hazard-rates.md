@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "The curious case of KO Hazard Rates in UFC fights"
+title:  "The curious case of hazard rates in the UFC"
 date:   2017-11-29 
 syntax_highlighter: rouge
 ---
@@ -8,9 +8,9 @@ syntax_highlighter: rouge
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-# The curious case of hazard rates in UFC
+# The curious case of hazard rates in the UFC
 
-I’ve recently scraped some UFC fights data, with the intention of applying some modeling on it in order to quantify fighter effectiveness. I’ve done some work before applying a Survival Analysis model on hockey data to quantify hockey player effectiveness, so I was curious to see what insights would come from applying the same model on MMA fighters.
+I’ve recently scraped some UFC fights data, with the intention of applying some modeling on it in order to quantify fighter effectiveness. I’ve done similar work before applying a [Survival Analysis model](https://en.wikipedia.org/wiki/Proportional_hazards_model) on hockey data to quantify player effectiveness, so I was curious to see what insights would come from applying the same type of approach on MMA fighters.
 
 I was playing around with the Kaplan Meier estimate of the survival curve, using KO as the failure event, when I noticed something interesting.
 
