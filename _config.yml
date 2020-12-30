@@ -24,7 +24,8 @@ github_username:  stphnma
 email :
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-minimal
+theme: minima
+# remote_theme: daattali/beautiful-jekyll@5.0.0
 plugins:
   - jekyll-feed
 
