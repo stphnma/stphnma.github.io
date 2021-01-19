@@ -24,11 +24,11 @@ github_username:  stphnma
 email :
 # Build settings
 markdown: kramdown
-theme: minima
-# remote_theme: daattali/beautiful-jekyll@5.0.0
+theme: jekyll-theme-hydeout
 plugins:
   - jekyll-feed
-
+paginate: 5
+remote_theme: fongandrew/hydeout
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

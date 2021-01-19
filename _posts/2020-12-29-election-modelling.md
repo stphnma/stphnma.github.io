@@ -46,34 +46,39 @@ There's nothing Bayesian about this model -- instead we'll be using it's predict
 
 ### 2. Voter Preference Trends
 For this part, we assume that trends in state-level preferences are governed by two random walks: a national component $$\alpha$$, and a state-specific component  $$\beta_{s}$$. Combining those, we end up with a stochastic variable representing state level preferences at time t.
-
+<div>
 $$\pi_{s,\ t} = logit(\beta_{s,\ t} + \alpha_{t})$$
+</div>
 
 (Logit is used to restrict the variable between 0 and 1)
 
 The trend for $$\pi_{s,\ t}$$ determines results in the polling data, given by the relationship
+<div>
 $$
 y_{s,\ t} \sim Binomial(\pi_{s,\ t})
 $$
 where y is the number of poll results favoring a specific candidates.
-
+</div>
 The $$\beta$$ and $$\alpha$$ parameters are then modeled as a reverse random walk (I didn't know you can do this!), given by:
 
+<div>
 $$
 \beta_{s,\ t} \sim Normal(\beta_{s,\ t+1})
 \\
 \alpha_{t} \sim Normal(\alpha_{t+1}, \sigma_{\alpha})
 $$
-
+</div>
 The structural forecast is used to set the time T (election date) prior on the state-level preferences $$\beta_{s,\ t}$$  If you think about it, this makes sense, since the structural forecast is trying to predict what the preferences are going to be on the election date, not 90 or so days before.
 
 $$\alpha$$ is given a prior at time T of 0 -- the reason being that on election day, we expect votes to be determined purely by state-specific effects. If you look at the paper, they describe it as "a national-level effect detects systematic departures from Beta".
 
+<div>
 $$
 \beta_{s,\ T} \sim Normal(h_{s}, \sigma_{s})
 \\
 \alpha_{T} \sim Normal(0, \sigma_{\alpha})
 $$
+</div>
 
 Even though this is now a reverse random walk, I think intuitively we can still think of this as a normal random walk.  The key thing is that the prior is just on the last time step instead of the first. You can think this as saying, absent any data, we expect voter preferences on election day (day T) to be what we forecasted from the fundamentals model.
 
@@ -227,3 +232,4 @@ And that's it! Overall it wasn't too complicated, the most annoying part was wai
 ## Addendum
 
 - Again, huge props goes to the Economist for releasing and open sourcing their model. Without their documentation and code to guide me, I wouldn't be able to do this post at all.
+- I should emphasize, getting the MCMC sampler to run a few thousand samples is actually pretty annoying. I don't remember exactly, but I think getting 10K samples took over 40 minutes. The dataset really isn't that large, so I'm guessing this is just from the complexity of fitting a 51 random walk variables.
